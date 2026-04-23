@@ -1,0 +1,48 @@
+{
+  "name": "EncryptionLog",
+  "type": "object",
+  "properties": {
+    "original_filename": {
+      "type": "string",
+      "description": "Original name of the file"
+    },
+    "encrypted_filename": {
+      "type": "string",
+      "description": "Name of the encrypted file"
+    },
+    "file_type": {
+      "type": "string",
+      "description": "MIME type of the original file"
+    },
+    "file_size": {
+      "type": "number",
+      "description": "Size of the original file in bytes"
+    },
+    "operation_type": {
+      "type": "string",
+      "enum": [
+        "encrypt",
+        "decrypt"
+      ],
+      "description": "Type of operation performed"
+    },
+    "algorithm_used": {
+      "type": "string",
+      "default": "AES-256-GCM",
+      "description": "Encryption algorithm used"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "completed",
+        "failed"
+      ],
+      "default": "completed",
+      "description": "Status of the operation"
+    }
+  },
+  "required": [
+    "original_filename",
+    "operation_type"
+  ]
+}
