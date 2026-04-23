@@ -31,4 +31,4 @@ dist-ssr
 .vite
 
 src/api/testSupabaseConnection.js
-/home/abdulsami/sami/SecureVault/src/api/testSupabaseConnection.js
+results/

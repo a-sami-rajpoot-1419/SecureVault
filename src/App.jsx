@@ -5,10 +5,12 @@ import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-d
 import PageNotFound from './libs/PageNotFound';
 import { AuthProvider, useAuth } from '@/libs/AuthContext';
 // Page imports
+import Home from '@/pages/Home';
 import Login from '@/pages/Login';
 import Register from '@/pages/Register';
 import Dashboard from '@/pages/Dashboard';
 import AuthCallback from '@/pages/AuthCallback';
+import Share from '@/pages/Share';
 
 // Protected Route Component
 const ProtectedRoute = ({ children }) => {
@@ -51,16 +53,15 @@ const PublicRoute = ({ children }) => {
 const AppRoutes = () => {
   return (
     <Routes>
-      {/* Public Routes */}
+      {/* Public Routes - Guest Mode */}
+      <Route path="/" element={<Home />} />
       <Route path="/login" element={<PublicRoute><Login /></PublicRoute>} />
       <Route path="/register" element={<PublicRoute><Register /></PublicRoute>} />
       <Route path="/auth/callback" element={<AuthCallback />} />
+      <Route path="/share/:token" element={<Share />} />
       
-      {/* Protected Routes */}
+      {/* Protected Routes - User Mode */}
       <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
-      
-      {/* Default Route */}
-      <Route path="/" element={<Navigate to="/dashboard" replace />} />
       
       {/* 404 Route */}
       <Route path="*" element={<PageNotFound />} />

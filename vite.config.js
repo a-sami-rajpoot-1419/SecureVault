@@ -4,10 +4,15 @@ import { defineConfig } from 'vite'
 
 // https://vite.dev/config/
 export default defineConfig({
-  logLevel: 'error', // Suppress warnings, only show errors
+  logLevel: 'info',
   plugins: [
     react(),
   ],
+  server: {
+    port: 5173,
+    open: true, // Auto-open browser
+    host: true, // Allow access from network
+  },
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
